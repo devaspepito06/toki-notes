@@ -1,39 +1,24 @@
 import { Button } from "./ui/button"
 import { RiAddFill } from "@remixicon/react"
-// import { Badge } from "./ui/badge"
-// import { useTheme } from "@/components/theme-provider"
 
-export const NotestHeader = () => {
-	//   const { setTheme, theme } = useTheme()
+type NotesHeaderProps = {
+  theme: string
+}
 
-	//   const toggleTheme = () => {
-	//     const nextTheme =
-	//       theme === "dark" ? "light" : theme === "light" ? "dark" : "dark"
-	//     setTheme(nextTheme)
-	//   }
+export const NotestHeader = ({ theme }: NotesHeaderProps) => {
+  const hanldeClickTest = () => {
+    alert("Add Note Clicked!")
+  }
 
-	const hanldeClickTest = () => {
-		alert("Add Note Clicked!")
-	}
-
-	return (
-		<div className="flex h-10 w-full items-center justify-center p-1">
-			<Button
-				className="h-8 bg-transparent font-extrabold text-amber-50 hover:cursor-pointer hover:bg-gray-600 hover:text-white"
-				onClick={hanldeClickTest}
-			>
-				<RiAddFill className="size-5" />
-				Add Note
-			</Button>
-
-			{/* {import.meta.env.MODE === "development" && (
-        <>
-          <Badge className="fixed top-3 left-34 z-50 w-25 bg-gray-800 text-white">
-            Development
-          </Badge>
-          <Button onClick={toggleTheme}>change</Button>
-        </>
-      )} */}
-		</div>
-	)
+  return (
+    <div className="flex h-10 w-full items-center justify-center p-1">
+      <Button
+        className={`h-8 bg-transparent font-medium transition-colors duration-300 hover:cursor-pointer hover:bg-gray-600 ${theme === "dark" ? "text-gray-400 hover:text-white" : "text-slate-900"} ${theme === "dark" ? "hover:bg-gray-700" : "hover:bg-amber-100"}`}
+        onClick={hanldeClickTest}
+      >
+        <RiAddFill className="size-4" />
+        Add Note
+      </Button>
+    </div>
+  )
 }
