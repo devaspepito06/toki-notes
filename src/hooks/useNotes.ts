@@ -66,8 +66,8 @@ export const useNotes = () => {
   }
 
   const confirmDelete = () => {
-    if (noteToDelete) {
-      setNotes(notes.filter((note) => note.id != noteToDelete))
+    if (noteToDelete !== null) {
+      setNotes(notes.filter((note) => note.id !== noteToDelete))
       setIsDeleteDialogOpen(false)
       setNoteToDelete(null)
     }
