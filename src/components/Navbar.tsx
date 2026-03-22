@@ -9,9 +9,6 @@ type NavbarProps = {
 }
 
 export const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
-  const goPomito = () => {
-    window.open("https://tokipomito.vercel.app/", "_blank")
-  }
   return (
     <div className="flex h-14 w-full items-center justify-between p-1">
       <div className="group flex h-12 w-32 flex-row items-center gap-2 rounded-full">
@@ -37,12 +34,14 @@ export const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             <RiMoonLine className="size-4 bg-transparent" />
           )}
         </Button>
-        <Button
-          className={`size-4 rounded-full bg-transparent transition-colors duration-300 hover:cursor-pointer hover:bg-transparent ${theme === "dark" ? "text-gray-400 hover:text-white" : "text-gray-500 hover:text-slate-950"}`}
-        >
-          <RiEqualizer3Line className="size-4" />
-        </Button>
-        <Button
+        {import.meta.env.MODE === "development" && (
+          <Button
+            className={`size-4 rounded-full bg-transparent transition-colors duration-300 hover:cursor-pointer hover:bg-transparent ${theme === "dark" ? "text-gray-400 hover:text-white" : "text-gray-500 hover:text-slate-950"}`}
+          >
+            <RiEqualizer3Line className="size-4" />
+          </Button>
+        )}
+        {/* <Button
           className="size-8 rounded-full bg-transparent hover:cursor-pointer"
           onClick={goPomito}
         >
@@ -54,7 +53,7 @@ export const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             />
             <AvatarFallback>User</AvatarFallback>
           </Avatar>
-        </Button>
+        </Button> */}
       </div>
 
       {import.meta.env.MODE === "development" && (
