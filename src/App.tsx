@@ -3,6 +3,7 @@ import { Notes } from "./components/notes/Notes"
 import { useTheme } from "@/components/theme-provider"
 import { useNotesContext } from "./hooks/useNotesContext"
 import { AddNoteDialog } from "./components/dialogs/AddNoteDialog"
+import { DeleteConfirmDialog } from "./components/dialogs/DeleteConfirmDIalog"
 
 export function App() {
   const { setTheme, theme } = useTheme()
@@ -20,11 +21,11 @@ export function App() {
     // setIsDialogOpen,
     isAddDialogOpen,
     setIsAddDialogOpen,
-    // isDeleteDialogOpen,
-    // setIsDeleteDialogOpen,
+    isDeleteDialogOpen,
+    setIsDeleteDialogOpen,
     addNote,
     openDeleteConfirmation,
-    // confirmDelete,
+    confirmDelete,
     openEditDialog,
     // saveEditedNote,
     closeAddDialog,
@@ -38,7 +39,7 @@ export function App() {
 
   return (
     <div className="flex min-h-svh justify-center">
-      <div className="flex w-[50%] flex-col gap-4 text-sm leading-loose">
+      <div className="flex w-[30%] flex-col gap-4 text-sm leading-loose">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Notes
           theme={theme}
@@ -57,6 +58,11 @@ export function App() {
           onDateChange={setDate}
           onAdd={addNote}
           onCancel={closeAddDialog}
+        />
+        <DeleteConfirmDialog
+          open={isDeleteDialogOpen}
+          onOpenChange={setIsDeleteDialogOpen}
+          onConfirm={confirmDelete}
         />
       </div>
     </div>
